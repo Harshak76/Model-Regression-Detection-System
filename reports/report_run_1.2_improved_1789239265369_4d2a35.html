@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Regression Report - 1.2_improved</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --pass: #22c55e;
+            --warn: #eab308;
+            --fail: #ef4444;
+            --accent: #38bdf8;
+            --border: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .status-badge {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .status-PASS { background-color: rgba(34, 197, 94, 0.2); color: var(--pass); border: 1px solid var(--pass); }
+        .status-WARN { background-color: rgba(234, 179, 8, 0.2); color: var(--warn); border: 1px solid var(--warn); }
+        .status-CRITICAL { background-color: rgba(239, 68, 68, 0.2); color: var(--fail); border: 1px solid var(--fail); }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .metric-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .metric-val {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        .delta {
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        .delta-positive { color: var(--pass); }
+        .delta-negative { color: var(--fail); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background-color: #0f172a;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        .badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-pass { background: rgba(34, 197, 94, 0.2); color: var(--pass); }
+        .badge-fail { background: rgba(239, 68, 68, 0.2); color: var(--fail); }
+
+        .diff-section {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        .diff-section h3 { margin-top: 0; color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Model Regression Report</h1>
+                <p style="color: var(--text-muted); margin: 0;">Target Prompt: <strong>1.2_improved</strong> | Baseline: <strong>1.0</strong></p>
+            </div>
+            <div class="status-badge status-WARN">
+                WARN
+            </div>
+        </div>
+
+        
+        <div style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent); padding: 1rem; border-radius: 4px; margin-bottom: 2rem;">
+            <strong>Summary:</strong> WARNING: Accuracy dropped by -0.0% or slow drift detected (Rolling avg: 90.48%). 0 regression(s).
+        </div>
+        
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Accuracy Score</div>
+                <div class="metric-val">
+                    100.0%
+                    
+                    <span class="delta delta-positive">
+                        (0.0%)
+                    </span>
+                    
+                </div>
+            </div>
+            <div class="metric-card">
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Passed Cases</div>
+                <div class="metric-val">15 / 15</div>
+            </div>
+            <div class="metric-card">
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Avg Latency</div>
+                <div class="metric-val">120.0 ms</div>
+            </div>
+            <div class="metric-card">
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Total Cost (Free/Mock)</div>
+                <div class="metric-val">$0.00</div>
+            </div>
+        </div>
+
+        
+
+        <div class="diff-section">
+            <h3>Full Test Suite Results</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Input Email</th>
+                        <th>Expected Category</th>
+                        <th>Predicted Category</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td><strong>TC-001</strong></td>
+                        <td style="max-width: 400px;">Hi support, I was billed $49 twice on my invoice #INV-9021 yesterday. Can I get a refund for the extra charge?</td>
+                        <td>billing</td>
+                        <td>billing</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-002</strong></td>
+                        <td style="max-width: 400px;">Every time I click 'Export CSV', the app freezes and shows HTTP 504 Gateway Timeout error.</td>
+                        <td>technical</td>
+                        <td>technical</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-003</strong></td>
+                        <td style="max-width: 400px;">I forgot my password and the reset link sent to my email has expired. Please unlock my account.</td>
+                        <td>account</td>
+                        <td>account</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-004</strong></td>
+                        <td style="max-width: 400px;">Love the product! Would be awesome if you guys added Dark Mode support in the mobile app.</td>
+                        <td>general</td>
+                        <td>general</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-005</strong></td>
+                        <td style="max-width: 400px;">hey my card expred need to update payment info so subscripion doesnt get canceled thx</td>
+                        <td>billing</td>
+                        <td>billing</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-006</strong></td>
+                        <td style="max-width: 400px;">Oh fantastic, another crash while saving my 2-hour report. Great job team, really top notch software!!</td>
+                        <td>technical</td>
+                        <td>technical</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-007</strong></td>
+                        <td style="max-width: 400px;">Bonjour, je n'arrive pas a changer mon adresse email dans les parametres du compte.</td>
+                        <td>account</td>
+                        <td>account</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-008</strong></td>
+                        <td style="max-width: 400px;">I need an itemized tax receipt for Q3 2025 for my finance team.</td>
+                        <td>billing</td>
+                        <td>billing</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-009</strong></td>
+                        <td style="max-width: 400px;">Can we schedule a call to discuss enterprise API limits and custom SLA agreements for our company?</td>
+                        <td>general</td>
+                        <td>general</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-010</strong></td>
+                        <td style="max-width: 400px;">Getting 403 Forbidden error when calling API endpoint /v2/analytics with my admin token.</td>
+                        <td>technical</td>
+                        <td>technical</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-011</strong></td>
+                        <td style="max-width: 400px;">I paid the annual plan yesterday but my invoice says 'Free Tier' and I also can't login now.</td>
+                        <td>billing</td>
+                        <td>billing</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-012</strong></td>
+                        <td style="max-width: 400px;">How do I add a new team member and assign them Admin privileges?</td>
+                        <td>account</td>
+                        <td>account</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-013</strong></td>
+                        <td style="max-width: 400px;">Your recent price hike is ridiculous. Cancel my account immediately.</td>
+                        <td>billing</td>
+                        <td>billing</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-014</strong></td>
+                        <td style="max-width: 400px;">Is your system compatible with SOC2 compliance and GDPR data residency requirement?</td>
+                        <td>general</td>
+                        <td>general</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>TC-015</strong></td>
+                        <td style="max-width: 400px;">Screen turns completely black after updating to v3.4 on iOS 18.</td>
+                        <td>technical</td>
+                        <td>technical</td>
+                        <td>
+                            
+                            <span class="badge badge-pass">PASS</span>
+                            
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

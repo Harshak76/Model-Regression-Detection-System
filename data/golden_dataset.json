@@ -1,0 +1,122 @@
+[
+  {
+    "id": "TC-001",
+    "input": "Hi support, I was billed $49 twice on my invoice #INV-9021 yesterday. Can I get a refund for the extra charge?",
+    "expected_category": "billing",
+    "expected_keywords": ["billed", "twice", "refund"],
+    "difficulty": "easy",
+    "notes": "Standard duplicate billing complaint."
+  },
+  {
+    "id": "TC-002",
+    "input": "Every time I click 'Export CSV', the app freezes and shows HTTP 504 Gateway Timeout error.",
+    "expected_category": "technical",
+    "expected_keywords": ["freeze", "timeout", "export"],
+    "difficulty": "easy",
+    "notes": "Standard technical bug report."
+  },
+  {
+    "id": "TC-003",
+    "input": "I forgot my password and the reset link sent to my email has expired. Please unlock my account.",
+    "expected_category": "account",
+    "expected_keywords": ["password", "reset", "unlock"],
+    "difficulty": "easy",
+    "notes": "Standard account access issue."
+  },
+  {
+    "id": "TC-004",
+    "input": "Love the product! Would be awesome if you guys added Dark Mode support in the mobile app.",
+    "expected_category": "general",
+    "expected_keywords": ["dark mode", "feature", "suggestion"],
+    "difficulty": "easy",
+    "notes": "Feature request / feedback."
+  },
+  {
+    "id": "TC-005",
+    "input": "hey my card expred need to update payment info so subscripion doesnt get canceled thx",
+    "expected_category": "billing",
+    "expected_keywords": ["card", "payment", "subscription"],
+    "difficulty": "medium",
+    "notes": "Edge case: typos and informal shorthand."
+  },
+  {
+    "id": "TC-006",
+    "input": "Oh fantastic, another crash while saving my 2-hour report. Great job team, really top notch software!!",
+    "expected_category": "technical",
+    "expected_keywords": ["crash", "saving", "report"],
+    "difficulty": "hard",
+    "notes": "Edge case: sarcastic complaint about crash."
+  },
+  {
+    "id": "TC-007",
+    "input": "Bonjour, je n'arrive pas a changer mon adresse email dans les parametres du compte.",
+    "expected_category": "account",
+    "expected_keywords": ["email", "compte", "parametres"],
+    "difficulty": "hard",
+    "notes": "Edge case: French language email regarding account settings."
+  },
+  {
+    "id": "TC-008",
+    "input": "I need an itemized tax receipt for Q3 2025 for my finance team.",
+    "expected_category": "billing",
+    "expected_keywords": ["tax", "receipt", "invoice"],
+    "difficulty": "easy",
+    "notes": "Tax invoice request."
+  },
+  {
+    "id": "TC-009",
+    "input": "Can we schedule a call to discuss enterprise API limits and custom SLA agreements for our company?",
+    "expected_category": "general",
+    "expected_keywords": ["enterprise", "custom", "partnership"],
+    "difficulty": "medium",
+    "notes": "Sales/Partnership inquiry."
+  },
+  {
+    "id": "TC-010",
+    "input": "Getting 403 Forbidden error when calling API endpoint /v2/analytics with my admin token.",
+    "expected_category": "technical",
+    "expected_keywords": ["403", "forbidden", "API"],
+    "difficulty": "medium",
+    "notes": "Developer API authentication error."
+  },
+  {
+    "id": "TC-011",
+    "input": "I paid the annual plan yesterday but my invoice says 'Free Tier' and I also can't login now.",
+    "expected_category": "billing",
+    "expected_keywords": ["paid", "annual", "invoice"],
+    "difficulty": "hard",
+    "notes": "Edge case: mixed billing & account login issue. Billing is root cause."
+  },
+  {
+    "id": "TC-012",
+    "input": "How do I add a new team member and assign them Admin privileges?",
+    "expected_category": "account",
+    "expected_keywords": ["team", "member", "privileges"],
+    "difficulty": "easy",
+    "notes": "Account permissions management."
+  },
+  {
+    "id": "TC-013",
+    "input": "Your recent price hike is ridiculous. Cancel my account immediately.",
+    "expected_category": "billing",
+    "expected_keywords": ["price", "cancel", "account"],
+    "difficulty": "medium",
+    "notes": "Cancellation due to pricing."
+  },
+  {
+    "id": "TC-014",
+    "input": "Is your system compatible with SOC2 compliance and GDPR data residency requirement?",
+    "expected_category": "general",
+    "expected_keywords": ["SOC2", "GDPR", "compliance"],
+    "difficulty": "medium",
+    "notes": "Compliance inquiry."
+  },
+  {
+    "id": "TC-015",
+    "input": "Screen turns completely black after updating to v3.4 on iOS 18.",
+    "expected_category": "technical",
+    "expected_keywords": ["screen", "black", "update"],
+    "difficulty": "easy",
+    "notes": "Mobile OS bug report."
+  }
+]

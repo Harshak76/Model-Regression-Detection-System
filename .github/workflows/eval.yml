@@ -1,0 +1,40 @@
+name: LLM Model Regression CI/CD
+
+on:
+  pull_request:
+    paths:
+      - 'prompts/**'
+      - 'data/**'
+      - 'src/**'
+  workflow_dispatch:
+
+jobs:
+  evaluate-prompts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pytest unit tests
+        run: |
+          pytest tests/
+
+      - name: Run Prompt Regression Evaluation
+        run: |
+          python src/cli.py run --prompt prompts/v1.0.yaml --baseline prompts/v1.0.yaml --mock
+
+      - name: Upload HTML Evaluation Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: regression-report
+          path: reports/*.html

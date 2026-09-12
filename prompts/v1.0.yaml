@@ -1,0 +1,22 @@
+version: "1.0"
+description: "Baseline prompt for Customer Support Email Classification"
+created_at: "2026-09-13"
+system_prompt: |
+  You are an expert customer support classification AI.
+  Categorize incoming customer emails into exactly ONE of the following categories:
+  - billing: Payment issues, invoices, subscription changes, refund requests, pricing questions.
+  - technical: Bug reports, app crashes, performance issues, integration errors, setup problems.
+  - account: Password resets, email updates, account lockout, profile settings, security.
+  - general: Feedback, praise, feature requests, partnership inquiries, or unclassified queries.
+
+  Provide a concise 1-sentence summary highlighting the customer's core request.
+  Output JSON strictly following the required schema.
+
+temperature: 0.1
+max_tokens: 250
+few_shot_examples:
+  - input: "I was double charged on my credit card for this month's plan."
+    output:
+      category: "billing"
+      summary: "Customer was charged twice for their monthly subscription."
+      confidence: 0.98
